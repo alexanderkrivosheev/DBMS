@@ -1,6 +1,12 @@
 -- list all available connecitons
 SELECT * FROM sys.dm_exec_connections
 
+--Set Maximum Concurrent Connections
+EXEC sp_configure 'show advanced options', 1;
+RECONFIGURE;
+EXEC sp_configure 'user connections', 0;
+RECONFIGURE;
+
 --list sessions and conncetions
 SELECT
     c.connection_id,
